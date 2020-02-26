@@ -7,7 +7,7 @@ In this quick-start the inlets-operator for Kubernetes will enable us to get a p
 * A computer or laptop running MacOS or Linux, or Git Bash or WSL on Windows
 * Docker for Mac / Docker Daemon - installed in the normal way, you probably have this already
 * [KinD](https://github.com/kubernetes-sigs/kind) - the "darling" of the Kubernetes community is Kubernetes IN Docker, a small one-shot cluster that can run inside a Docker container
-* [k3sup](https://github.com/alexellis/k3sup) - k3sup is an app installer that takes a helm chart and bundles it behind a simple CLI
+* [arkade](https://github.com/alexellis/arkade) - arkade is an app installer that takes a helm chart and bundles it behind a simple CLI
 
 ## Create the Kubernetes cluster with KinD
 
@@ -55,23 +55,23 @@ The above shows one node Ready, so we are ready to move on.
 
 ## Install the inlets-operator
 
-You can use k3sup or helm to install the inlets-operator:
+You can use arkade or helm to install the inlets-operator:
 
 ```bash
-# Get k3sup
-curl -sSLf https://get.k3sup.dev/ | sudo sh
+# Get arkade 
+curl -sSLf https://dl.get-arkade.dev/ | sudo sh
 ```
 
 Save an access token for your cloud provider as `$HOME/access-token`, in this example we're using DigitalOcean.
 
 ```bash
-k3sup app install inlets-operator \
+arkade install inlets-operator \
  --provider digitalocean \
  --region lon1 \
  --token-file $HOME/do-access-token
 ```
 
-> You can run `k3sup app install inlets-operator --help` to see a list of other cloud providers.
+> You can run `arkade install inlets-operator --help` to see a list of other cloud providers.
 
 Set the `--region` flag as required, it's best to have low latency between your current location and where the exit-servers will be provisioned.
 
