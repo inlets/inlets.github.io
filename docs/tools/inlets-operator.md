@@ -219,7 +219,7 @@ United Kingdom            ukwest               United Kingdom
 Install using helm:
 
 ```bash
-export SUBSCRIPTION_ID=""
+export SUBSCRIPTION_ID="YOUR_SUBSCRIPTION_ID"
 export AZURE_REGION="ukwest"
 export INLETS_LICENSE="$(cat ~/.inlets/LICENSE)"
 export ACCESS_KEY="$HOME/Downloads/client_credentials.json"
@@ -236,7 +236,7 @@ helm repo update
 helm upgrade inlets-operator --install inlets/inlets-operator \
   --set provider=azure,region=$AZURE_REGION \
   --set subscriptionID=$SUBSCRIPTION_ID \
-  --set inletsProLicense=$LICENSE
+  --set inletsProLicense=$INLETS_LICENSE
 ```
 
 ### Create tunnel servers on Linode
@@ -258,7 +258,7 @@ helm repo update
 
 # Install inlets-operator with the required fields
 helm upgrade inlets-operator --install inlets/inlets-operator \
-  --set provider=linode,region=us-east,inletsProLicense=$LICENSE
+  --set provider=linode,region=us-east,inletsProLicense=$(cat $HOME/inlets-pro-license.txt)
 ```
 
 You can also install the inlets-operator using a single command using [arkade](https://get-arkade.dev/), arkade runs against any Kubernetes cluster.
