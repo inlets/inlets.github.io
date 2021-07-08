@@ -480,6 +480,20 @@ Note the `if` parameter is the IP address of your local computer, this must be r
 
 Then access the service via `http://127.0.0.1:8080`.
 
+### Example usage with Vultr
+
+Prerequisites:
+* Prepare a Vultr API Key via your [Members Area](https://my.vultr.com/settings/#settingsapi)
+
+```
+# Obtain your Vultr API Key
+export VULTR_API_KEY=""
+
+inletsctl create --provider vultr \
+  --access-token $VULTR_API_KEY \
+  --region LHR
+```
+
 ## Troubleshooting
 
 inletsctl provisions a host called an exit node or exit server using public cloud APIs. It then 
