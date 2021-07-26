@@ -5,9 +5,8 @@ The easiest way to get started is with `inletsctl` which will create a public ho
 ## Get inletsctl and `inlets`
 
 ```bash
-# Remove `sudo to install to the local folder
-curl -sLSf https://raw.githubusercontent.com/inlets/inletsctl/master/get.sh | sudo sh
-
+curl -sLSf https://inletsctl.inlets.dev | sh
+sudo mv inletsctl /usr/local/bin/
 sudo inletsctl download
 ```
 
