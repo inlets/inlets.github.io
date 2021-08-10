@@ -554,6 +554,45 @@ inletsctl create --provider scaleway \
 
 The region is hard-coded to France / Paris 1.
 
+### Example usage with OVHcloud
+
+You need to create API keys for the ovhCloud country/continent you're going to deploy with inletsctl. 
+For an overview of available endpoint check [supported-apis](https://github.com/ovh/go-ovh#supported-apis) documentation
+
+For, example, Europe visit https://eu.api.ovh.com/createToken to create your API keys.
+
+However, the specific value for the endpoint flag are following:
+
+
+* ``ovh-eu`` for OVH Europe API
+* ``ovh-us`` for OVH US API
+* ``ovh-ca`` for OVH Canada API
+* ``soyoustart-eu`` for So you Start Europe API
+* ``soyoustart-ca`` for So you Start Canada API
+* ``kimsufi-eu`` for Kimsufi Europe API
+* ``kimsufi-ca`` for Kimsufi Canada API
+
+
+`ovh-eu` is the default endpoint and `DE1` the default region. 
+
+For the proper `rights` choose all HTTP Verbs (GET,PUT,DELETE, POST), and we need only the `/cloud/` API.
+
+```bash
+export APPLICATION_KEY=""
+export APPLICATION_SECRET=""
+export CONSUMER_KEY=""
+export ENDPOINT=""
+export PROJECT_ID=""
+
+inletsctl create --provider ovh \
+  --access-token $APPLICATION_KEY \
+  --secret-key $APPLICATION_SECRET 
+  --consumer-key $CONSUMER_KEY \ 
+  --project-id $SERVICENAME \
+  --endpoint $ENDPOINT
+```
+
+
 ## The `delete` command
 
 The delete command takes an id or IP address which are given to you at the end of the `inletsctl create` command. You'll also need to specify your cloud access token.
